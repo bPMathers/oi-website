@@ -5,25 +5,8 @@ import Footer from '../components/Footer.jsx'
 import { useTweaks } from '../context/TweaksContext.jsx'
 
 export default function Contact() {
-  const { tweaks, t } = useTweaks()
-  const FR = tweaks.lang === 'fr'
+  const { t } = useTweaks()
   const [sent, setSent] = useState(false)
-
-  const subjects = FR
-    ? ['Demande générale', 'Soumission démo (Avant-poste III uniquement)', 'Presse & radio', 'Programmation', 'Revente', 'Commande boutique']
-    : ['General enquiry', 'Demo submission (Outpost III only)', 'Press & radio', 'Booking', 'Wholesale', 'Shop order']
-
-  const routes = FR ? [
-    { h: 'général',        e: 'bonjour@observatoire-ideal.net', d: "Tout ce qui n'entre pas ailleurs." },
-    { h: 'presse · radio', e: 'presse@observatoire-ideal.net',  d: 'Promo, entrevues, aperçus sous embargo.' },
-    { h: 'programmation',  e: 'booking@observatoire-ideal.net', d: "Pour tous les projets. Nous bookons à l'interne." },
-    { h: 'revente',        e: 'revente@observatoire-ideal.net', d: 'Disquaires indépendants · dépôt ou ferme.' },
-  ] : [
-    { h: 'general',        e: 'hello@observatoire-ideal.net',   d: "Everything that doesn't fit below." },
-    { h: 'press · radio',  e: 'press@observatoire-ideal.net',   d: 'Promo requests, interviews, embargoed previews.' },
-    { h: 'booking',        e: 'booking@observatoire-ideal.net', d: 'For all projects. We book in-house.' },
-    { h: 'trade',          e: 'trade@observatoire-ideal.net',   d: 'Independent shops · consignment or firm order.' },
-  ]
 
   return (
     <div className="scanlines" data-screen-label="Contact">
@@ -31,7 +14,7 @@ export default function Contact() {
         <Nav active="contact" />
         <CoordBar
           section={`/ ${t.nav.contact.toLowerCase()}`}
-          catalog={FR ? 'ouvert · réponse 7 jours' : 'open · 7-day reply'}
+          catalog={t.contact_catalog}
         />
 
         <section className="c-head">
@@ -45,24 +28,18 @@ export default function Contact() {
           <div className="addr">
             <h3>{t.contact_offices_h}</h3>
             <div className="office">Montréal</div>
-            <div>5445 av. de Gaspé, #510<br />Montréal (QC) H2T 3B2 · Canada<br />+1 514 000 0000</div>
+            <div>0000 av. de Poil Poli, #69<br />Montréal (QC) H2T 3B2 · Canada<br />+1 514 000 0000</div>
 
             <div className="office" style={{ marginTop: 24 }}>Québec</div>
-            <div>175 rue Saint-Jean<br />Québec (QC) G1R 1N4 · Canada<br />+1 418 000 0000</div>
+            <div>000 rue Saint-Fardoche<br />Québec (QC) G1R 1N4 · Canada<br />+1 418 000 0000</div>
 
-            <h3>{FR ? "À l'oreille" : 'By ear'}</h3>
+            <h3>{t.contact_by_ear_h}</h3>
             <div>
-              {FR
-                ? <>Heures · mardi–vendredi · 11h–18h<br />Pas de boutique publique. Visites sur rendez-vous.</>
-                : <>Hours · Tuesday – Friday · 11h – 18h<br />Not a public-facing shop. Visits by appointment.</>}
+              {t.contact_hours}<br />{t.contact_visits}
             </div>
 
-            <h3>{FR ? 'Presse' : 'Press'}</h3>
-            <div>
-              {FR
-                ? "Visuels haute résolution et biographies sur demande. Aperçus sous embargo disponibles à la presse et à la radio jusqu'à 8 semaines avant la parution."
-                : 'High-res artwork and bios on request. Embargoed previews available to press & radio up to 8 weeks before release.'}
-            </div>
+            <h3>{t.contact_press_h}</h3>
+            <div>{t.contact_press_b}</div>
           </div>
 
           <form
@@ -72,14 +49,14 @@ export default function Contact() {
             <h3>{t.contact_form_h}</h3>
             <label>{t.contact_subject}</label>
             <select>
-              {subjects.map(s => <option key={s}>{s}</option>)}
+              {t.contact_subjects.map(s => <option key={s}>{s}</option>)}
             </select>
             <label>{t.contact_name}</label>
             <input type="text" required />
-            <label>{FR ? 'Courriel de réponse' : 'Reply-to'}</label>
-            <input type="email" placeholder={FR ? 'vous@ailleurs.net' : 'you@elsewhere.net'} required />
+            <label>{t.contact_reply_label}</label>
+            <input type="email" placeholder={t.contact_reply_placeholder} required />
             <label>{t.contact_message}</label>
-            <textarea placeholder={FR ? 'Bref. Nous lisons chacun.' : 'Keep it short. We read every one.'} />
+            <textarea placeholder={t.contact_message_placeholder} />
             <button className="btn accent" style={{ marginTop: 18 }} type="submit">
               {t.contact_submit}
             </button>
@@ -89,14 +66,14 @@ export default function Contact() {
 
         <div className="section-head">
           <div>
-            <div className="idx">{FR ? '§ lignes directes' : '§ direct lines'}</div>
-            <h2>{FR ? 'Aiguillage' : 'Routing'}</h2>
+            <div className="idx">{t.contact_lines_idx}</div>
+            <h2>{t.contact_routing_h}</h2>
           </div>
-          <div className="meta">{FR ? 'aucune réponse automatique' : 'no auto-replies'}</div>
+          <div className="meta">{t.contact_routing_meta}</div>
         </div>
 
         <div className="routing">
-          {routes.map(r => (
+          {t.contact_routes.map(r => (
             <div key={r.h} className="r">
               <h4>{r.h}</h4>
               <div className="e">{r.e}</div>

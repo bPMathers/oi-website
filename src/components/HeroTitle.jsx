@@ -1,22 +1,14 @@
-export default function HeroTitle({ lang }) {
-  if (lang === 'en') {
-    return (
-      <>
-        <span className="glitch-h" data-text="A listening">A listening</span>
-        <br />
-        post for <span className="redact">&nbsp;unresolved&nbsp;</span>
-        <br />
-        <em>signals.</em>
-      </>
-    )
-  }
+import { useTweaks } from '../context/TweaksContext.jsx'
+
+export default function HeroTitle() {
+  const { t } = useTweaks()
   return (
     <>
-      <span className="glitch-h" data-text="Un poste">Un poste</span>
+      <span className="glitch-h" data-text={t.hero_line1}>{t.hero_line1}</span>
       <br />
-      d'écoute
+      {t.hero_line2}
       <br />
-      pour signaux<span className="redact">&nbsp;non résolus&nbsp;</span>.
+      <em>{t.hero_line3}</em>
     </>
   )
 }

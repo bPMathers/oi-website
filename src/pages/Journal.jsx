@@ -5,31 +5,8 @@ import Footer from '../components/Footer.jsx'
 import { OI_DATA } from '../data/oi.js'
 import { useTweaks } from '../context/TweaksContext.jsx'
 
-const MONTHS_FR = ['JAN','FÉV','MAR','AVR','MAI','JUIN','JUIL','AOÛT','SEPT','OCT','NOV','DÉC']
-const MONTHS_EN = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
-
-const ASIDES_FR = [
-  'signé · m.s. · montréal',
-  'signé · éditeurs · québec',
-  'tag · avant-poste · appel',
-  'tag · notes · compte-rendu',
-  'tag · catalogue · annonce',
-  'signé · e.k. · mile end',
-]
-const ASIDES_EN = [
-  'signed · m.s. · montréal',
-  'signed · editors · québec',
-  'tagged · outpost · open-call',
-  'tagged · notes · review',
-  'tagged · catalog · announcement',
-  'signed · e.k. · mile end',
-]
-
 export default function Journal() {
-  const { tweaks, t, i18n } = useTweaks()
-  const FR = tweaks.lang === 'fr'
-  const MONTHS = FR ? MONTHS_FR : MONTHS_EN
-  const ASIDES = FR ? ASIDES_FR : ASIDES_EN
+  const { t, i18n } = useTweaks()
   const [subscribed, setSubscribed] = useState(false)
 
   return (
@@ -38,7 +15,7 @@ export default function Journal() {
         <Nav active="journal" />
         <CoordBar
           section={`/ ${t.nav.journal.toLowerCase()}`}
-          catalog={FR ? 'irrégulier' : 'irregular'}
+          catalog={t.journal_catalog}
         />
 
         <section className="j-head">
@@ -60,7 +37,7 @@ export default function Journal() {
               <article key={i} className="entry">
                 <div className="d">
                   <span className="n">{String(d.getUTCDate()).padStart(2, '0')}</span>
-                  {MONTHS[d.getUTCMonth()]} · {d.getUTCFullYear()}
+                  {t.events_months[d.getUTCMonth()]} · {d.getUTCFullYear()}
                 </div>
                 <div>
                   <h3>{i18n(n.title)}</h3>
@@ -73,10 +50,10 @@ export default function Journal() {
                   </div>
                 </div>
                 <div className="aside">
-                  {ASIDES[i % ASIDES.length]}
+                  {t.journal_asides[i % t.journal_asides.length]}
                   <br />
                   <span style={{ color: 'var(--ink-2)' }}>
-                    {FR ? 'déposé' : 'filed'} {n.date.replace(/-/g, '.')}
+                    {t.journal_filed} {n.date.replace(/-/g, '.')}
                   </span>
                 </div>
               </article>
@@ -86,12 +63,8 @@ export default function Journal() {
 
         <div className="subscribe">
           <div>
-            <h4>{FR ? 'Recevoir les transmissions' : 'Receive transmissions'}</h4>
-            <div className="dim">
-              {FR
-                ? 'un courriel par parution · aucune promo · aucun suivi'
-                : 'one email per release · no marketing · no tracking'}
-            </div>
+            <h4>{t.journal_sub_h}</h4>
+            <div className="dim">{t.journal_sub_desc}</div>
           </div>
           <form
             onSubmit={(e) => { e.preventDefault(); setSubscribed(true) }}
@@ -99,12 +72,10 @@ export default function Journal() {
             <input
               type="email"
               required
-              placeholder={FR ? 'vous@ailleurs.net' : 'you@elsewhere.net'}
+              placeholder={t.journal_sub_placeholder}
             />
             <button className="btn accent" type="submit">
-              {subscribed
-                ? (FR ? '✓ inscrit' : '✓ registered')
-                : (FR ? "s'inscrire" : 'subscribe')}
+              {subscribed ? t.journal_sub_done : t.journal_sub_btn}
             </button>
           </form>
         </div>

@@ -27,47 +27,6 @@ function computeEdges(projects) {
 export default function Roster() {
   const { tweaks, setTweak, t, i18n } = useTweaks()
   const navigate = useNavigate()
-  const FR = tweaks.lang === 'fr'
-
-  const RSTR = FR ? {
-    kicker: '§ roster · carte de constellation · force dirigée',
-    h1: 'Un catalogue tracé<br>comme un graphe.',
-    lede: 'Douze projets, quatorze opérateurs. Les arêtes relient les projets qui partagent au moins un·e membre. Survolez un nœud pour une lecture. Glissez pour recomposer. Cliquez pour entrer.',
-    layout: 'DISPOSITION ·',
-    force: 'force', radial: 'radial', grid: 'grille',
-    hint: 'glisser les nœuds · survoler pour détails · cliquer pour entrer',
-    axis_tr: 'obs · carte de proximité',
-    nodes: 'nœuds', edges: 'arêtes',
-    operators: 'Opérateurs',
-    legend_node: 'nœud de projet',
-    legend_edge: 'membre partagé',
-    legend_hint: 'survoler un nom pour voir ses projets',
-    list_kicker: '§ roster / vue liste',
-    list_h2: 'Par ordre alphabétique',
-    list_link: 'parutions →',
-    coord_section: '/ roster · graphe',
-    coord_catalog: '12 nœuds',
-    est: 'form.',
-  } : {
-    kicker: '§ roster · constellation map · force-directed',
-    h1: 'A catalog drawn<br>as a graph.',
-    lede: 'Twelve projects, fourteen operators. Edges connect projects that share at least one member. Hover a node for a reading. Drag to re-arrange. Click to enter.',
-    layout: 'LAYOUT ·',
-    force: 'force', radial: 'radial', grid: 'grid',
-    hint: 'drag nodes · hover for details · click to enter',
-    axis_tr: 'obs · proximity map',
-    nodes: 'nodes', edges: 'edges',
-    operators: 'Operators',
-    legend_node: 'project node',
-    legend_edge: 'shared member',
-    legend_hint: 'hover a member to see their projects',
-    list_kicker: '§ roster / list view',
-    list_h2: 'In alphabetical order',
-    list_link: 'releases →',
-    coord_section: '/ roster · graph',
-    coord_catalog: '12 nodes',
-    est: 'est',
-  }
 
   const projects = OI_DATA.projects
   const members = OI_DATA.members
@@ -320,37 +279,37 @@ export default function Roster() {
     <div className="scanlines" data-screen-label="Roster">
       <div className="frame">
         <Nav active="roster" />
-        <CoordBar section={RSTR.coord_section} catalog={RSTR.coord_catalog} />
+        <CoordBar section={t.roster_coord_section} catalog={t.roster_coord_catalog} />
 
         <section className="graph-head">
           <div>
-            <div className="mono small upper dim" style={{ marginBottom: 12 }}>{RSTR.kicker}</div>
+            <div className="mono small upper dim" style={{ marginBottom: 12 }}>{t.roster_kicker}</div>
             <h1>
-              <em dangerouslySetInnerHTML={{ __html: RSTR.h1 }} />
+              <em dangerouslySetInnerHTML={{ __html: t.roster_h1 }} />
             </h1>
           </div>
-          <div className="lede">{RSTR.lede}</div>
+          <div className="lede">{t.roster_lede}</div>
         </section>
 
         <div className="layout-picker">
-          <span>{RSTR.layout}</span>
+          <span>{t.roster_layout}</span>
           {['force', 'radial', 'grid'].map(l => (
             <button
               key={l}
               className={tweaks.graphLayout === l ? 'active' : ''}
               onClick={() => setTweak('graphLayout', l)}
             >
-              {l === 'force' ? RSTR.force : l === 'radial' ? RSTR.radial : RSTR.grid}
+              {l === 'force' ? t.roster_force : l === 'radial' ? t.roster_radial : t.roster_grid}
             </button>
           ))}
-          <span style={{ marginLeft: 'auto' }} className="dim">{RSTR.hint}</span>
+          <span style={{ marginLeft: 'auto' }} className="dim">{t.roster_hint}</span>
         </div>
 
         <div className="graph-layout">
           <div className="graph-stage" ref={stageRef}>
             <span className="axis axis-tl">x: 000.0 · y: 000.0</span>
-            <span className="axis axis-tr">{RSTR.axis_tr}</span>
-            <span className="axis axis-bl">12 {RSTR.nodes} · {edges.length} {RSTR.edges}</span>
+            <span className="axis axis-tr">{t.roster_axis_tr}</span>
+            <span className="axis axis-bl">12 {t.roster_nodes} · {edges.length} {t.roster_edges}</span>
             <span className="axis axis-br">rev. 0x4A · 2026.04</span>
             <span className="axis-crosshair" />
             <svg xmlns="http://www.w3.org/2000/svg">
@@ -411,7 +370,7 @@ export default function Roster() {
                   <div className="tags">
                     {popupTags.map(tag => <span key={tag} className="tag">{tag}</span>)}
                     <span className="tag" style={{ borderColor: 'var(--accent)', color: 'var(--accent)' }}>
-                      {RSTR.est} {popupProj.year}
+                      {t.roster_est} {popupProj.year}
                     </span>
                   </div>
                 </>
@@ -421,7 +380,7 @@ export default function Roster() {
 
           <aside className="sidebar">
             <h3>
-              {RSTR.operators} <span>14</span>
+              {t.roster_operators} <span>14</span>
             </h3>
             <div>
               {members.map(m => (
@@ -439,20 +398,20 @@ export default function Roster() {
               ))}
             </div>
             <div className="legend">
-              <div><span className="k" /> {RSTR.legend_node}</div>
-              <div><span className="l" /> {RSTR.legend_edge}</div>
-              <div style={{ marginTop: 8 }}>{RSTR.legend_hint}</div>
+              <div><span className="k" /> {t.roster_legend_node}</div>
+              <div><span className="l" /> {t.roster_legend_edge}</div>
+              <div style={{ marginTop: 8 }}>{t.roster_legend_hint}</div>
             </div>
           </aside>
         </div>
 
         <div className="section-head">
           <div>
-            <div className="idx">{RSTR.list_kicker}</div>
-            <h2>{RSTR.list_h2}</h2>
+            <div className="idx">{t.roster_list_kicker}</div>
+            <h2>{t.roster_list_h2}</h2>
           </div>
           <div className="meta">
-            <Link to="/releases" className="link">{RSTR.list_link}</Link>
+            <Link to="/releases" className="link">{t.roster_list_link}</Link>
           </div>
         </div>
 

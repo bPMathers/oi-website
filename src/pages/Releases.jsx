@@ -8,10 +8,9 @@ import { OI_DATA } from '../data/oi.js'
 import { useTweaks } from '../context/TweaksContext.jsx'
 
 export default function Releases() {
-  const { tweaks, t, i18n } = useTweaks()
+  const { t, i18n } = useTweaks()
   const navigate = useNavigate()
   const [view, setView] = useState('table')
-  const FR = tweaks.lang === 'fr'
   const rels = OI_DATA.releases
 
   const byYear = useMemo(() => {
@@ -38,13 +37,11 @@ export default function Releases() {
               {t.releases_kicker}
             </div>
             <h1>
-              <em dangerouslySetInnerHTML={{ __html: FR ? 'Trente<br>mesures.' : 'Thirty<br>measurements.' }} />
+              <em dangerouslySetInnerHTML={{ __html: t.releases_h1 }} />
             </h1>
           </div>
           <div className="mono small dim" style={{ borderLeft: '1px solid var(--rule)', paddingLeft: 18, lineHeight: 1.8 }}>
-            {FR
-              ? "Catalogue complet, OBS-001 → OBS-030, trié par code. Pressages limités (typiquement 300); la plupart des premiers titres sont épuisés."
-              : "The complete catalog, OBS-001 → OBS-030, sorted by catalog number. Pressings are limited (typically 300) and most early titles are out of press."}
+            {t.releases_lede}
           </div>
         </section>
 

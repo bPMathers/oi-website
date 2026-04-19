@@ -698,7 +698,7 @@ hr.rule-thick { border: 0; border-top: 1px solid var(--ink); margin: 0; }
   font-family: var(--f-display);
   font-weight: 400;
   font-style: italic;
-  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-size: clamp(1.5rem, 7vw, 8rem);
   line-height: 0.92;
   letter-spacing: -0.02em;
   margin: 0;

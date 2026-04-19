@@ -12,7 +12,7 @@ export default function About() {
     <div className="scanlines" data-screen-label="About">
       <div className="frame">
         <Nav active="about" />
-        <CoordBar section={`/ ${t.nav.about.toLowerCase()}`} catalog="manifesto / colophon" />
+        <CoordBar section={`/ ${t.nav.about.toLowerCase()}`} catalog={t.about_catalog} />
 
         <section className="a-head">
           <div className="kicker">{t.about_kicker}</div>

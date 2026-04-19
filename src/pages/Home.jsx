@@ -40,7 +40,7 @@ export default function Home() {
           <div>
             <div className="hero-tag">{t.home_kicker}</div>
             <h1>
-              <HeroTitle lang={tweaks.lang} />
+              <HeroTitle />
             </h1>
             <p
               className="dim mono small"

@@ -33,7 +33,7 @@ export default function Nav({ active }) {
       </Link>
       <button
         className={`nav-burger ${open ? 'open' : ''}`}
-        aria-label={open ? 'Close menu' : 'Open menu'}
+        aria-label={open ? t.nav_close : t.nav_open}
         aria-expanded={open}
         onClick={() => setOpen(o => !o)}
       >

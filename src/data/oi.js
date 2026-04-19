@@ -3,7 +3,7 @@
 export const OI_DATA = {
     label: {
         name: 'Observatoire Idéal',
-        founded: 2017,
+        founded: 2026,
         location: { fr: 'Montréal', en: 'Montréal' },
         catalog: 'OBS',
         coords: '45°30′N · 73°34′O',
@@ -105,7 +105,7 @@ export const OI_DATA = {
                 fr: ['ambient', 'bande', 'chambre'],
                 en: ['ambient', 'tape', 'chamber'],
             },
-            year: 2017,
+            year: 2026,
             members: ['ms', 'nl', 'ab'],
             summary: {
                 fr: "Un trio qui opère à la longueur d'un cordage. Piano, violon, voix — enregistré dans une chapelle désaffectée des Cantons-de-l'Est.",
@@ -121,7 +121,7 @@ export const OI_DATA = {
             cat: 'OBS-002',
             name: 'Low Atlas',
             tags: { fr: ['drone', 'modulaire'], en: ['drone', 'modular'] },
-            year: 2018,
+            year: 2026,
             members: ['ek', 'ab', 'lw'],
             summary: {
                 fr: 'Ensemble modulaire à trois voix. Le drone de longue haleine comme relevé topographique.',
@@ -140,7 +140,7 @@ export const OI_DATA = {
                 fr: ['électronique', 'logiciel'],
                 en: ['electronic', 'software'],
             },
-            year: 2018,
+            year: 2026,
             members: ['jp', 'sn'],
             summary: {
                 fr: 'Duo de logiciels cassés. Chaque pièce est un plantage, canonisé.',
@@ -159,7 +159,7 @@ export const OI_DATA = {
                 fr: ['prise de terrain', 'documentaire'],
                 en: ['field recording', 'documentary'],
             },
-            year: 2019,
+            year: 2026,
             members: ['fd'],
             summary: {
                 fr: 'Preneur de son en solo. Pièces, météo, infrastructures, ronflement.',
@@ -178,7 +178,7 @@ export const OI_DATA = {
                 fr: ['dub', 'basse', 'percussions'],
                 en: ['dub', 'bass', 'percussion'],
             },
-            year: 2019,
+            year: 2026,
             members: ['rv', 'ci', 'om'],
             summary: {
                 fr: "Dub lent, saxophone dans un écho à bande de la taille d'une pièce.",
@@ -197,7 +197,7 @@ export const OI_DATA = {
                 fr: ['chambre', 'improvisation'],
                 en: ['chamber', 'improvisation'],
             },
-            year: 2020,
+            year: 2026,
             members: ['th', 'nl', 'yk', 'om'],
             summary: {
                 fr: 'Improvisation dirigée. Quatre musiciens, indices écrits, météo non écrite.',
@@ -216,7 +216,7 @@ export const OI_DATA = {
                 fr: ['voix', 'bande', 'chanson'],
                 en: ['voice', 'tape', 'song'],
             },
-            year: 2020,
+            year: 2026,
             members: ['ms'],
             summary: {
                 fr: 'Voix solo et bande quart-de-pouce. Berceuses pour pièces légèrement décalées.',
@@ -232,7 +232,7 @@ export const OI_DATA = {
             cat: 'OBS-008',
             name: 'Yui Kasta',
             tags: { fr: ['violoncelle', 'solo'], en: ['cello', 'solo'] },
-            year: 2021,
+            year: 2026,
             members: ['yk'],
             summary: {
                 fr: 'Violoncelle solo. Frotté, gratté, laissé à résonner.',
@@ -248,7 +248,7 @@ export const OI_DATA = {
             cat: 'OBS-009',
             name: 'Brume Quartet',
             tags: { fr: ['cordes', 'drone'], en: ['strings', 'drone'] },
-            year: 2022,
+            year: 2026,
             members: ['ab', 'yk', 'nl', 'pm'],
             summary: {
                 fr: 'Drone de cordes, piano, une voix. Quarante minutes, un seul accord.',
@@ -267,7 +267,7 @@ export const OI_DATA = {
                 fr: ['percussions', 'modulaire'],
                 en: ['percussion', 'modular'],
             },
-            year: 2022,
+            year: 2026,
             members: ['ek', 'ci'],
             summary: {
                 fr: 'Deux batteurs et une horloge patchable. Le rythme comme système météo lent.',
@@ -286,7 +286,7 @@ export const OI_DATA = {
                 fr: ['synthèse', 'électronique'],
                 en: ['synthesis', 'electronic'],
             },
-            year: 2023,
+            year: 2026,
             members: ['lw', 'sn'],
             summary: {
                 fr: 'Deux synthésistes, quatre mains, une table.',
@@ -302,7 +302,7 @@ export const OI_DATA = {
             cat: 'OBS-012',
             name: 'Petra Mol',
             tags: { fr: ['voix', 'choral'], en: ['voice', 'choral'] },
-            year: 2024,
+            year: 2026,
             members: ['pm', 'ms'],
             summary: {
                 fr: "Deux voix dans une cage d'escalier. C'est toute l'instrumentation.",
@@ -321,7 +321,7 @@ export const OI_DATA = {
             title: { fr: 'Chapelle, vide', en: 'Chapel, Empty' },
             project: 'halyards',
             format: { fr: 'LP + livre', en: 'LP + book' },
-            year: 2017,
+            year: 2026,
             duration: '42:10',
         },
         {
@@ -329,7 +329,7 @@ export const OI_DATA = {
             title: { fr: 'Élévation I–IV', en: 'Elevation I–IV' },
             project: 'low-atlas',
             format: '2×LP',
-            year: 2018,
+            year: 2026,
             duration: '74:22',
         },
         {
@@ -337,7 +337,7 @@ export const OI_DATA = {
             title: { fr: 'Plantage vol. 1', en: 'Crash Vol. 1' },
             project: 'parhelion',
             format: { fr: 'CD + code', en: 'CD + code' },
-            year: 2018,
+            year: 2026,
             duration: '38:04',
         },
         {
@@ -345,7 +345,7 @@ export const OI_DATA = {
             title: { fr: 'Six pièces', en: 'Six Rooms' },
             project: 'dorn-solo',
             format: { fr: 'Cassette', en: 'Cassette' },
-            year: 2019,
+            year: 2026,
             duration: '45:00',
         },
         {
@@ -353,7 +353,7 @@ export const OI_DATA = {
             title: { fr: 'Champ bas', en: 'Low Field' },
             project: 'vex-system',
             format: 'LP',
-            year: 2019,
+            year: 2026,
             duration: '48:16',
         },
         {
@@ -361,7 +361,7 @@ export const OI_DATA = {
             title: { fr: 'Météo / écrit', en: 'Weather / Written' },
             project: 'haar-ensemble',
             format: 'LP',
-            year: 2020,
+            year: 2026,
             duration: '39:55',
         },
         {
@@ -369,7 +369,7 @@ export const OI_DATA = {
             title: { fr: 'Berceuses, légères', en: 'Lullabies, Slight' },
             project: 'seraph-solo',
             format: 'LP',
-            year: 2020,
+            year: 2026,
             duration: '36:42',
         },
         {
@@ -377,7 +377,7 @@ export const OI_DATA = {
             title: { fr: 'Solo, une pièce', en: 'Solo, One Room' },
             project: 'kasta-piano',
             format: 'LP',
-            year: 2021,
+            year: 2026,
             duration: '41:09',
         },
         {
@@ -385,7 +385,7 @@ export const OI_DATA = {
             title: { fr: 'Quarante minutes', en: 'Forty Minutes' },
             project: 'brume-quartet',
             format: 'LP',
-            year: 2022,
+            year: 2026,
             duration: '40:00',
         },
         {
@@ -393,7 +393,7 @@ export const OI_DATA = {
             title: { fr: 'Horloge en phase', en: 'Phase Clock' },
             project: 'koda-percussion',
             format: 'LP',
-            year: 2022,
+            year: 2026,
             duration: '52:30',
         },
         {
@@ -401,7 +401,7 @@ export const OI_DATA = {
             title: { fr: 'Infrastructure', en: 'Infrastructure' },
             project: 'dorn-solo',
             format: '2×LP',
-            year: 2022,
+            year: 2026,
             duration: '76:44',
         },
         {
@@ -409,7 +409,7 @@ export const OI_DATA = {
             title: { fr: 'Sur la table', en: 'Table Top' },
             project: 'wenn-sn',
             format: 'LP',
-            year: 2023,
+            year: 2026,
             duration: '44:18',
         },
         {
@@ -420,7 +420,7 @@ export const OI_DATA = {
             },
             project: null,
             format: { fr: '2×LP comp.', en: '2xLP comp' },
-            year: 2023,
+            year: 2026,
             duration: '82:00',
         },
         {
@@ -428,7 +428,7 @@ export const OI_DATA = {
             title: { fr: 'Halyards II', en: 'Halyards II' },
             project: 'halyards',
             format: 'LP',
-            year: 2023,
+            year: 2026,
             duration: '38:20',
         },
         {
@@ -439,7 +439,7 @@ export const OI_DATA = {
             },
             project: 'mol-voice',
             format: { fr: 'Cassette', en: 'Cassette' },
-            year: 2023,
+            year: 2026,
             duration: '33:12',
         },
         {
@@ -447,7 +447,7 @@ export const OI_DATA = {
             title: { fr: 'Plantage vol. 2', en: 'Crash Vol. 2' },
             project: 'parhelion',
             format: { fr: 'LP + code', en: 'LP + code' },
-            year: 2023,
+            year: 2026,
             duration: '41:07',
         },
         {
@@ -455,7 +455,7 @@ export const OI_DATA = {
             title: { fr: 'Carnets de terrain', en: 'Field Notes' },
             project: null,
             format: { fr: 'Livre + CD', en: 'Book + CD' },
-            year: 2024,
+            year: 2026,
             duration: '—',
         },
         {
@@ -463,7 +463,7 @@ export const OI_DATA = {
             title: { fr: 'Champ bas, dubs', en: 'Low Field, Dubs' },
             project: 'vex-system',
             format: '12"',
-            year: 2024,
+            year: 2026,
             duration: '28:40',
         },
         {
@@ -471,7 +471,7 @@ export const OI_DATA = {
             title: { fr: 'Élévation V', en: 'Elevation V' },
             project: 'low-atlas',
             format: 'LP',
-            year: 2024,
+            year: 2026,
             duration: '42:50',
         },
         {
@@ -479,7 +479,7 @@ export const OI_DATA = {
             title: { fr: 'Bande, ralentie', en: 'Tape, Slowed' },
             project: 'seraph-solo',
             format: { fr: 'Cassette', en: 'Cassette' },
-            year: 2024,
+            year: 2026,
             duration: '35:30',
         },
         {
@@ -490,7 +490,7 @@ export const OI_DATA = {
             },
             project: null,
             format: { fr: '2×LP comp.', en: '2xLP comp' },
-            year: 2024,
+            year: 2026,
             duration: '78:12',
         },
         {
@@ -498,7 +498,7 @@ export const OI_DATA = {
             title: { fr: 'Météo / non écrit', en: 'Weather / Unwritten' },
             project: 'haar-ensemble',
             format: 'LP',
-            year: 2025,
+            year: 2026,
             duration: '43:11',
         },
         {
@@ -506,7 +506,7 @@ export const OI_DATA = {
             title: { fr: 'Horloge en phase II', en: 'Phase Clock II' },
             project: 'koda-percussion',
             format: 'LP',
-            year: 2025,
+            year: 2026,
             duration: '49:44',
         },
         {
@@ -514,7 +514,7 @@ export const OI_DATA = {
             title: { fr: 'Coordonnées', en: 'Coordinates' },
             project: 'dorn-solo',
             format: { fr: '4×Cassette', en: '4xCassette' },
-            year: 2025,
+            year: 2026,
             duration: '—',
         },
         {
@@ -522,7 +522,7 @@ export const OI_DATA = {
             title: { fr: 'Violoncelle, résonnant', en: 'Cello, Ringing' },
             project: 'kasta-piano',
             format: 'LP',
-            year: 2025,
+            year: 2026,
             duration: '39:17',
         },
         {
@@ -672,7 +672,7 @@ export const OI_DATA = {
             },
         },
         {
-            date: '2025-11-30',
+            date: '2026-11-30',
             title: {
                 fr: "Fin d'année : catalogue épuisé",
                 en: 'End-of-year: sold-out roster',
@@ -683,7 +683,7 @@ export const OI_DATA = {
             },
         },
         {
-            date: '2025-10-12',
+            date: '2026-10-12',
             title: {
                 fr: 'Archives du code source Parhélion en ligne',
                 en: 'Parhelion source-code archive online',

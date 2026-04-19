@@ -32,8 +32,7 @@ function mmss(n) {
 
 export default function Project() {
   const { id } = useParams()
-  const { tweaks, t, i18n } = useTweaks()
-  const FR = tweaks.lang === 'fr'
+  const { t, i18n } = useTweaks()
 
   const p = OI_DATA.projectById[id] || OI_DATA.projects[0]
 
@@ -41,40 +40,6 @@ export default function Project() {
     document.title = `${p.name} — OI`
     return () => { document.title = 'Observatoire Idéal' }
   }, [p.name])
-
-  const L = FR ? {
-    kind: 'projet', est: 'form.',
-    operators: 'opérateurs', releases: 'parutions',
-    cat: 'Catalogue', founded: 'Formé en', members: 'Opérateurs', rels: 'Parutions',
-    latest: 'Dernière', status: 'État', active: '■ actif',
-    bio: '§ bio', ops: '§ opérateurs', disc: '§ discographie', prev: '§ aperçu', links: '§ liens',
-    preview_idx: '§ aperçu · dernière parution',
-    ops_h: 'Opérateurs',
-    prox_h: 'Proximité · projets liés', via: 'via',
-    orders_h: 'Commandes · Contact',
-    link_shop: 'Boutique · éditions physiques',
-    link_events: 'Prochaines dates',
-    link_contact: 'Booking · presse',
-    disc_idx: '§ discographie',
-    disc_h: 'Toutes les parutions',
-    disc_items: 'éléments',
-  } : {
-    kind: 'project', est: 'est',
-    operators: 'operators', releases: 'releases',
-    cat: 'Catalog', founded: 'Founded', members: 'Members', rels: 'Releases',
-    latest: 'Latest', status: 'Status', active: '■ active',
-    bio: '§ bio', ops: '§ operators', disc: '§ discography', prev: '§ preview', links: '§ links',
-    preview_idx: '§ preview · latest release',
-    ops_h: 'Operators',
-    prox_h: 'Proximity · related projects', via: 'via',
-    orders_h: 'Orders · Contact',
-    link_shop: 'Shop · physical editions',
-    link_events: 'Upcoming dates',
-    link_contact: 'Booking & press',
-    disc_idx: '§ discography',
-    disc_h: 'All releases',
-    disc_items: 'items',
-  }
 
   const rels = OI_DATA.releases.filter(r => r.project === p.id)
   const related = OI_DATA.projects.filter(o => o.id !== p.id && o.members.some(m => p.members.includes(m)))
@@ -92,32 +57,32 @@ export default function Project() {
 
         <section className="p-head">
           <div>
-            <div className="cat">{p.cat} · {L.kind} · {L.est} {p.year}</div>
+            <div className="cat">{p.cat} · {t.project_kind} · {t.project_est} {p.year}</div>
             <h1><span className="glitch-h" data-text={p.name}>{p.name}</span></h1>
             <div className="tags">
               {tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
               <span className="tag" style={{ borderColor: 'var(--accent)', color: 'var(--accent)' }}>
-                {members.length} {L.operators}
+                {members.length} {t.project_operators}
               </span>
-              <span className="tag">{rels.length} {L.releases}</span>
+              <span className="tag">{rels.length} {t.project_releases}</span>
             </div>
           </div>
           <aside>
-            <div className="r"><span>{L.cat}</span><span>{p.cat}</span></div>
-            <div className="r"><span>{L.founded}</span><span>{p.year}</span></div>
-            <div className="r"><span>{L.members}</span><span>{members.length}</span></div>
-            <div className="r"><span>{L.rels}</span><span>{rels.length}</span></div>
-            <div className="r"><span>{L.latest}</span><span>{rels.at(-1)?.cat || '—'}</span></div>
-            <div className="r"><span>{L.status}</span><span className="acc">{L.active}</span></div>
+            <div className="r"><span>{t.project_cat}</span><span>{p.cat}</span></div>
+            <div className="r"><span>{t.project_founded}</span><span>{p.year}</span></div>
+            <div className="r"><span>{t.project_members}</span><span>{members.length}</span></div>
+            <div className="r"><span>{t.project_rels}</span><span>{rels.length}</span></div>
+            <div className="r"><span>{t.project_latest}</span><span>{rels.at(-1)?.cat || '—'}</span></div>
+            <div className="r"><span>{t.project_status}</span><span className="acc">{t.project_active}</span></div>
           </aside>
         </section>
 
         <div className="glyph-strip">
-          <span>{L.bio}</span>
-          <span>{L.ops}</span>
-          <span>{L.disc}</span>
-          <span>{L.prev}</span>
-          <span>{L.links}</span>
+          <span>{t.project_bio}</span>
+          <span>{t.project_ops}</span>
+          <span>{t.project_disc}</span>
+          <span>{t.project_prev}</span>
+          <span>{t.project_links}</span>
         </div>
 
         <section className="p-body">
@@ -131,7 +96,7 @@ export default function Project() {
               <>
                 <div className="section-head" style={{ marginTop: 50 }}>
                   <div>
-                    <div className="idx">{L.preview_idx}</div>
+                    <div className="idx">{t.project_preview_idx}</div>
                     <h2>{i18n(firstRel.title)}</h2>
                   </div>
                   <div className="meta">{firstRel.cat} · {firstRel.year} · {i18n(firstRel.format)}</div>
@@ -155,7 +120,7 @@ export default function Project() {
 
           <div className="stack-lg">
             <div className="members-box">
-              <h4>{L.ops_h}</h4>
+              <h4>{t.project_ops_h}</h4>
               {members.map(m => (
                 <div key={m.id} className="m">
                   <span className="n">{m.name}</span>
@@ -166,7 +131,7 @@ export default function Project() {
 
             {related.length > 0 && (
               <div className="links-box">
-                <h4>{L.prox_h}</h4>
+                <h4>{t.project_prox_h}</h4>
                 <div className="related">
                   {related.map(r => {
                     const shared = r.members
@@ -176,7 +141,7 @@ export default function Project() {
                     return (
                       <Link key={r.id} to={`/project/${r.id}`}>
                         <span className="c">{r.cat}</span>
-                        {r.name} <span className="dim">· {L.via} {shared}</span>
+                        {r.name} <span className="dim">· {t.project_via} {shared}</span>
                       </Link>
                     )
                   })}
@@ -185,14 +150,14 @@ export default function Project() {
             )}
 
             <div className="links-box">
-              <h4>{L.orders_h}</h4>
+              <h4>{t.project_orders_h}</h4>
               <div
                 className="stack"
                 style={{ fontFamily: 'var(--f-mono)', fontSize: 'var(--step--1)', color: 'var(--ink-2)', lineHeight: 1.7 }}
               >
-                <div><Link className="link" to="/shop">{L.link_shop}</Link></div>
-                <div><Link className="link" to="/events">{L.link_events}</Link></div>
-                <div><Link className="link" to="/contact">{L.link_contact}</Link></div>
+                <div><Link className="link" to="/shop">{t.project_link_shop}</Link></div>
+                <div><Link className="link" to="/events">{t.project_link_events}</Link></div>
+                <div><Link className="link" to="/contact">{t.project_link_contact}</Link></div>
               </div>
             </div>
           </div>
@@ -200,10 +165,10 @@ export default function Project() {
 
         <div className="section-head">
           <div>
-            <div className="idx">{L.disc_idx}</div>
-            <h2>{L.disc_h}</h2>
+            <div className="idx">{t.project_disc_idx}</div>
+            <h2>{t.project_disc_h}</h2>
           </div>
-          <div className="meta">{rels.length} {L.disc_items}</div>
+          <div className="meta">{rels.length} {t.project_disc_items}</div>
         </div>
 
         <div className="discography">
