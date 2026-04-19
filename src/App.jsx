@@ -15,7 +15,7 @@ import GlitchTick from './components/GlitchTick.jsx'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/oi-website">
       <TweaksProvider>
         <Routes>
           <Route path="/" element={<Home />} />
