@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(mkdir -p /tmp/design-bundle)",
+      "Read(//tmp/**)",
+      "Bash(tar -xzf /Users/bpm22/.claude/projects/-Users-bpm22-Documents-01-Projects-observatoire-ideal-site-web-oi-website/94df988f-b4d7-487b-a34f-c4f07aa99b51/tool-results/webfetch-1776531024939-mgfrv6.bin)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/roster)",
+      "Bash(kill %1)",
+      "Bash(wait)"
+    ]
+  }
+}
