@@ -180,6 +180,44 @@ export function AudioPlayerProvider({ children }) {
     decodePeaks(src).then(p => { if (p) setPeaksForActive(p) })
   }, [getSrcForId, loadSrc, decodePeaks])
 
+  /** Switch to the next audio file for a given instance */
+  const nextTrack = useCallback((id) => {
+    const currentSrc = getSrcForId(id)
+    const idx = AUDIO_FILES.indexOf(currentSrc)
+    const nextIdx = (idx + 1) % AUDIO_FILES.length
+    const nextSrc = AUDIO_FILES[nextIdx]
+    instanceSrcMap.current[id] = nextSrc
+    const el = audioRef.current
+    if (!el) return
+    loadSrc(nextSrc)
+    setActiveId(id)
+    setPeaksForActive(peaksCacheRef.current[nextSrc] || null)
+    el.currentTime = 0
+    setCurrentTime(0)
+    el.play()
+    setPlaying(true)
+    decodePeaks(nextSrc).then(p => { if (p) setPeaksForActive(p) })
+  }, [getSrcForId, loadSrc, decodePeaks])
+
+  /** Switch to the previous audio file for a given instance */
+  const prevTrack = useCallback((id) => {
+    const currentSrc = getSrcForId(id)
+    const idx = AUDIO_FILES.indexOf(currentSrc)
+    const prevIdx = (idx - 1 + AUDIO_FILES.length) % AUDIO_FILES.length
+    const prevSrc = AUDIO_FILES[prevIdx]
+    instanceSrcMap.current[id] = prevSrc
+    const el = audioRef.current
+    if (!el) return
+    loadSrc(prevSrc)
+    setActiveId(id)
+    setPeaksForActive(peaksCacheRef.current[prevSrc] || null)
+    el.currentTime = 0
+    setCurrentTime(0)
+    el.play()
+    setPlaying(true)
+    decodePeaks(prevSrc).then(p => { if (p) setPeaksForActive(p) })
+  }, [getSrcForId, loadSrc, decodePeaks])
+
   /** Get peaks for any instance (active or not) — used by Waveform */
   const getPeaksForId = useCallback((id) => {
     const src = getSrcForId(id)
@@ -195,9 +233,11 @@ export function AudioPlayerProvider({ children }) {
   const value = useMemo(() => ({
     activeId, playing, currentTime, duration, peaksForActive, fileDurations,
     playInstance, pauseInstance, toggleInstance, seek, restart,
+    nextTrack, prevTrack,
     getPeaksForId, getSrcForId, getDurationForId,
   }), [activeId, playing, currentTime, duration, peaksForActive, fileDurations,
     playInstance, pauseInstance, toggleInstance, seek, restart,
+    nextTrack, prevTrack,
     getPeaksForId, getSrcForId, getDurationForId])
 
   return (
@@ -225,6 +265,8 @@ export function useAudioPlayer(id) {
   const play = useCallback(() => ctx.playInstance(id), [ctx, id])
   const pause = useCallback(() => ctx.pauseInstance(), [ctx])
   const restart = useCallback(() => ctx.restart(id), [ctx, id])
+  const next = useCallback(() => ctx.nextTrack(id), [ctx, id])
+  const prev = useCallback(() => ctx.prevTrack(id), [ctx, id])
 
   return {
     playing: instancePlaying,
@@ -236,5 +278,7 @@ export function useAudioPlayer(id) {
     play,
     pause,
     restart,
+    next,
+    prev,
   }
 }

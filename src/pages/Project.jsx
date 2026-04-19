@@ -39,6 +39,16 @@ export default function Project() {
 
   useEffect(() => {
     document.title = `${p.name} — OI`
+    // Scroll to hash anchor if present
+    const hash = window.location.hash
+    if (hash) {
+      setTimeout(() => {
+        const el = document.querySelector(hash)
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    } else {
+      window.scrollTo(0, 0)
+    }
     return () => { document.title = 'Observatoire Idéal' }
   }, [p.name])
 
@@ -79,23 +89,23 @@ export default function Project() {
         </section>
 
         <div className="glyph-strip">
-          <span>{t.project_bio}</span>
-          <span>{t.project_ops}</span>
-          <span>{t.project_disc}</span>
-          <span>{t.project_prev}</span>
-          <span>{t.project_links}</span>
+          <a href="#bio" onClick={e => { e.preventDefault(); document.getElementById('bio')?.scrollIntoView({ behavior: 'smooth' }) }}>{t.project_bio}</a>
+          <a href="#operators" onClick={e => { e.preventDefault(); document.getElementById('operators')?.scrollIntoView({ behavior: 'smooth' }) }}>{t.project_ops}</a>
+          <a href="#discography" onClick={e => { e.preventDefault(); document.getElementById('discography')?.scrollIntoView({ behavior: 'smooth' }) }}>{t.project_disc}</a>
+          <a href="#preview" onClick={e => { e.preventDefault(); document.getElementById('preview')?.scrollIntoView({ behavior: 'smooth' }) }}>{t.project_prev}</a>
+          <a href="#links" onClick={e => { e.preventDefault(); document.getElementById('links')?.scrollIntoView({ behavior: 'smooth' }) }}>{t.project_links}</a>
         </div>
 
         <section className="p-body">
           <div>
-            <div className="bio">
+            <div className="bio" id="bio">
               <p>{i18n(p.summary)}</p>
               <p>{i18n(p.bio)}</p>
             </div>
 
             {firstRel && (
               <>
-                <div className="section-head" style={{ marginTop: 50 }}>
+                <div className="section-head" id="preview" style={{ marginTop: 50 }}>
                   <div>
                     <div className="idx">{t.project_preview_idx}</div>
                     <h2>{i18n(firstRel.title)}</h2>
@@ -119,7 +129,7 @@ export default function Project() {
           </div>
 
           <div className="stack-lg">
-            <div className="members-box">
+            <div className="members-box" id="operators">
               <h4>{t.project_ops_h}</h4>
               {members.map(m => (
                 <div key={m.id} className="m">
@@ -149,7 +159,7 @@ export default function Project() {
               </div>
             )}
 
-            <div className="links-box">
+            <div className="links-box" id="links">
               <h4>{t.project_orders_h}</h4>
               <div
                 className="stack"
@@ -163,7 +173,7 @@ export default function Project() {
           </div>
         </section>
 
-        <div className="section-head">
+        <div className="section-head" id="discography">
           <div>
             <div className="idx">{t.project_disc_idx}</div>
             <h2>{t.project_disc_h}</h2>

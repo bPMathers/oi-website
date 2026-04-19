@@ -43,7 +43,10 @@ export default function Roster() {
   const draggingRef = useRef(null)
 
   const [popup, setPopup] = useState(null)
+  const [mobilePopup, setMobilePopup] = useState(null)
   const [highlightMid, setHighlightMid] = useState(null)
+
+  const isMobile = () => window.innerWidth <= 720
 
   const seedLayout = (layout) => {
     const stage = stageRef.current
@@ -246,7 +249,11 @@ export default function Roster() {
     const drag = draggingRef.current
     if (drag && drag.moved) { e.preventDefault(); return }
     e.preventDefault()
-    navigate(`/project/${simRef.current[idx].id}`)
+    if (isMobile()) {
+      setMobilePopup(idx)
+    } else {
+      navigate(`/project/${simRef.current[idx].id}`)
+    }
   }
 
   const memberProjectCount = (mid) => projects.filter(p => p.members.includes(mid)).length
@@ -377,6 +384,36 @@ export default function Roster() {
               )}
             </div>
           </div>
+
+          {mobilePopup !== null && (() => {
+            const mp = simRef.current[mobilePopup]?.proj
+            if (!mp) return null
+            const mpMembers = mp.members.map(id => OI_DATA.memberById[id].name).join(' · ')
+            const mpTags = i18n(mp.tags)
+            return (
+              <div className="popup-mobile-overlay" onClick={() => setMobilePopup(null)}>
+                <div className="popup-mobile" onClick={e => e.stopPropagation()}>
+                  <div className="cat">{mp.cat}</div>
+                  <div className="name">{mp.name}</div>
+                  <div className="sum">{i18n(mp.summary)}</div>
+                  <hr />
+                  <div className="members">{mpMembers}</div>
+                  <div className="tags">
+                    {mpTags.map(tag => <span key={tag} className="tag">{tag}</span>)}
+                    <span className="tag" style={{ borderColor: 'var(--accent)', color: 'var(--accent)' }}>
+                      {t.roster_est} {mp.year}
+                    </span>
+                  </div>
+                  <div className="popup-actions">
+                    <button className="btn accent" onClick={() => { setMobilePopup(null); navigate(`/project/${mp.id}`) }}>
+                      {t.home_cta_graph?.replace('→', '').trim() || 'Enter'} →
+                    </button>
+                    <button className="btn" onClick={() => setMobilePopup(null)}>✕</button>
+                  </div>
+                </div>
+              </div>
+            )
+          })()}
 
           <aside className="sidebar">
             <h3>

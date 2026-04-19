@@ -16,7 +16,7 @@ function mmss(s) {
 
 export default function Home() {
   const { tweaks, t, i18n } = useTweaks()
-  const { playing, toggle, restart, currentTime, duration } = useAudioPlayer('home-now-playing')
+  const { playing, toggle, restart, next, prev, currentTime, duration } = useAudioPlayer('home-now-playing')
 
   const stripItems = OI_DATA.projects.map(p => (
     <span key={p.id}>
@@ -231,9 +231,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="np-controls">
-                <button className="btn" onClick={restart}>{t.prev}</button>
+                <button className="btn" onClick={prev}>{t.prev}</button>
                 <button className="btn accent" onClick={toggle}>{playing ? t.pause : t.play}</button>
-                <button className="btn" onClick={restart}>{t.next}</button>
+                <button className="btn" onClick={next}>{t.next}</button>
               </div>
             </div>
             <div style={{ marginTop: 14 }}>

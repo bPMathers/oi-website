@@ -42,7 +42,7 @@ export const STR = {
     s4_title: "Sur la table",
     s4_meta: "aperçu",
     now_playing: "en lecture",
-    prev: "↰ préc.", play: "▶ lire", pause: "❚❚ pause", next: "suiv. ↱",
+    prev: "\u25C0\uFE0E préc.", play: "\u25B6\uFE0E lire", pause: "\u275A\u275A pause", next: "suiv. \u25B6\uFE0E",
     side_a: "face A · ∞",
 
     // footer
@@ -74,6 +74,8 @@ export const STR = {
     tw_lang: "Langue",
     tw_layout_force: "Force", tw_layout_radial: "Radial", tw_layout_grid: "Grille",
     tw_pair_serif_mono: "Serif / Mono", tw_pair_serif_sans: "Serif / Sans", tw_pair_sans: "Sans", tw_pair_mono: "Mono",
+    tw_custom: "perso",
+    tw_glow: "Halo",
 
     various: "Divers",
 
@@ -295,7 +297,7 @@ export const STR = {
     s4_title: "On the desk",
     s4_meta: "preview",
     now_playing: "now playing",
-    prev: "↰ prev", play: "▶ play", pause: "❚❚ pause", next: "next ↱",
+    prev: "\u25C0\uFE0E prev", play: "\u25B6\uFE0E play", pause: "\u275A\u275A pause", next: "next \u25B6\uFE0E",
     side_a: "side A · ∞",
 
     // footer
@@ -322,6 +324,8 @@ export const STR = {
     tw_accent: "Accent", tw_fonts: "Fonts", tw_glitch: "Glitch", tw_graph: "Graph", tw_lang: "Language",
     tw_layout_force: "Force", tw_layout_radial: "Radial", tw_layout_grid: "Grid",
     tw_pair_serif_mono: "Serif / Mono", tw_pair_serif_sans: "Serif / Sans", tw_pair_sans: "Sans", tw_pair_mono: "Mono",
+    tw_custom: "custom",
+    tw_glow: "Glow",
 
     various: "Various",
 

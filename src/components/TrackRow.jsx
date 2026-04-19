@@ -11,7 +11,7 @@ export default function TrackRow({ instanceId, index, title, seed, durationSec }
 
   return (
     <div className="wave-row">
-      <button className="play" onClick={toggle}>{playing ? '❚❚' : '▶'}</button>
+      <button className="play" onClick={toggle}>{playing ? '\u275A\u275A' : '\u25B6\uFE0E'}</button>
       <div>
         <div className="mono small dim">A{index + 1}</div>
         <div className="serif italic" style={{ fontSize: 'var(--step-1)' }}>{title}</div>

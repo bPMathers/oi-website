@@ -7,6 +7,10 @@ const ACCENTS = [
   { key: 'lime',   color: 'oklch(0.78 0.17 125)' },
   { key: 'violet', color: 'oklch(0.55 0.22 310)' },
   { key: 'ink',    color: 'var(--ink)' },
+  { key: 'orange', color: 'oklch(0.70 0.18 55)' },
+  { key: 'pink',   color: 'oklch(0.65 0.22 350)' },
+  { key: 'gold',   color: 'oklch(0.75 0.15 85)' },
+  { key: 'teal',   color: 'oklch(0.60 0.12 180)' },
 ]
 
 export default function TweaksPanel() {
@@ -35,6 +39,7 @@ export default function TweaksPanel() {
       >
         ⌘
       </button>
+      {open && <div className="tweaks-backdrop" onClick={() => setOpen(false)} />}
       <div className={`tweaks-panel ${open ? 'on' : ''}`}>
         <h4>
           {t.tw_h}
@@ -81,16 +86,53 @@ export default function TweaksPanel() {
 
         <div className="tweaks-row">
           <label>{t.tw_accent}</label>
-          <div className="swatches">
-            {ACCENTS.map(a => (
-              <span
-                key={a.key}
-                className={`sw ${tweaks.accent === a.key ? 'active' : ''}`}
-                style={{ background: a.color }}
-                onClick={() => setTweak('accent', a.key)}
-                title={a.key}
+          <div>
+            <div className="swatches">
+              {ACCENTS.map(a => (
+                <span
+                  key={a.key}
+                  className={`sw ${tweaks.accent === a.key ? 'active' : ''}`}
+                  style={{ background: a.color }}
+                  onClick={() => setTweak('accent', a.key)}
+                  title={a.key}
+                />
+              ))}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 6 }}>
+              <input
+                type="color"
+                value={tweaks.customAccent || '#cc3333'}
+                onChange={e => {
+                  setTweak('customAccent', e.target.value)
+                  setTweak('accent', 'custom')
+                }}
+                className="accent-picker"
               />
-            ))}
+              <span
+                className={`opt ${tweaks.accent === 'custom' ? 'active' : ''}`}
+                style={{ fontSize: 'var(--step--2)', cursor: 'pointer', padding: '2px 6px', border: '1px solid var(--rule)' }}
+                onClick={() => {
+                  if (tweaks.customAccent) setTweak('accent', 'custom')
+                }}
+              >
+                {t.tw_custom || 'custom'}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="tweaks-row">
+          <label>{t.tw_glow || 'Glow'}</label>
+          <div>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value={tweaks.accentGlow}
+              onChange={e => setTweak('accentGlow', parseFloat(e.target.value))}
+            />
+            <div className="tiny dim">{Math.round(tweaks.accentGlow * 100)}%</div>
           </div>
         </div>
 
