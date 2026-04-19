@@ -41,7 +41,7 @@
 
   /* tweaks */
   --glitch: 0.5;
-  --accent-glow: 0.5;
+  --accent-glow: 1.5;
 }
 
 [data-theme="dark"] {
@@ -468,8 +468,12 @@ hr.rule-thick { border: 0; border-top: 1px solid var(--ink); margin: 0; }
 
 .tweaks-panel {
   position: fixed;
-  inset: 24px;
-  width: auto;
+  top: 24px;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 600px;
   background: var(--paper);
   border: 1px solid var(--ink);
   box-shadow: 4px 4px 0 var(--ink);
@@ -482,9 +486,20 @@ hr.rule-thick { border: 0; border-top: 1px solid var(--ink); margin: 0; }
 }
 .tweaks-panel.on { display: block; }
 
+.glow-preview {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: box-shadow 0.1s;
+}
+
 @media (max-width: 720px) {
   .tweaks-panel {
-    inset: 12px;
+    top: 12px;
+    bottom: 12px;
+    width: calc(100% - 24px);
     padding: 18px 16px;
   }
   .tweaks-row { grid-template-columns: 72px 1fr; }
@@ -1092,7 +1107,7 @@ hr.rule-thick { border: 0; border-top: 1px solid var(--ink); margin: 0; }
 .status-announce { color: var(--ink-2); border-color: var(--rule); }
 .status-hold { color: var(--ink-3); border-color: var(--rule); border-style: dashed; }
 .map-stage { margin-top: 30px; position: relative; height: 320px; border: 1px solid var(--ink); background: linear-gradient(var(--rule-2) 1px, transparent 1px) 0 0 / 30px 30px, linear-gradient(90deg, var(--rule-2) 1px, transparent 1px) 0 0 / 30px 30px; background-color: var(--paper); overflow: hidden; }
-.map-stage .pin { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); transform: translate(-50%,-50%); box-shadow: 0 0 calc(10px * var(--accent-glow)) calc(4px * var(--accent-glow)) var(--accent-dim); }
+.map-stage .pin { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); transform: translate(-50%,-50%); box-shadow: 0 0 calc(10px * var(--accent-glow)) calc(4px * var(--accent-glow)) var(--accent); }
 .map-stage .pin::after { content: attr(data-label); position: absolute; left: 14px; top: -8px; white-space: nowrap; font-family: var(--f-mono); font-size: var(--step--2); color: var(--ink); background: var(--paper); padding: 1px 5px; border: 1px solid var(--rule); }
 .map-caption { position: absolute; bottom: 8px; left: 10px; font-family: var(--f-mono); font-size: var(--step--2); color: var(--ink-3); letter-spacing: 0.08em; }
 @media (max-width: 780px) {
@@ -1352,7 +1367,7 @@ hr.rule-thick { border: 0; border-top: 1px solid var(--ink); margin: 0; }
   letter-spacing: 0.04em;
 }
 .node:hover .dot,
-.node.highlight .dot { background: var(--accent); border-color: var(--accent); transform: scale(1.5); box-shadow: 0 0 calc(12px * var(--accent-glow)) calc(4px * var(--accent-glow)) var(--accent-dim); }
+.node.highlight .dot { background: var(--accent); border-color: var(--accent); transform: scale(1.5); box-shadow: 0 0 calc(12px * var(--accent-glow)) calc(4px * var(--accent-glow)) var(--accent); }
 .node:hover .label,
 .node.highlight .label { color: var(--accent); border-color: var(--accent); }
 .node.dim .dot { background: var(--rule); border-color: var(--rule); }

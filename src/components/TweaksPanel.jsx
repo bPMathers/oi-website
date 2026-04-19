@@ -123,16 +123,27 @@ export default function TweaksPanel() {
 
         <div className="tweaks-row">
           <label>{t.tw_glow || 'Glow'}</label>
-          <div>
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.05"
-              value={tweaks.accentGlow}
-              onChange={e => setTweak('accentGlow', parseFloat(e.target.value))}
-            />
-            <div className="tiny dim">{Math.round(tweaks.accentGlow * 100)}%</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <input
+                type="range"
+                min="0"
+                max="10"
+                step="0.1"
+                value={tweaks.accentGlow}
+                onChange={e => setTweak('accentGlow', parseFloat(e.target.value))}
+                style={{ flex: 1 }}
+              />
+              <span
+                className="glow-preview"
+                style={{
+                  background: 'var(--accent)',
+                  boxShadow: `0 0 ${tweaks.accentGlow * 12}px ${tweaks.accentGlow * 4}px var(--accent)`,
+                  opacity: tweaks.accentGlow === 0 ? 0.3 : 1,
+                }}
+              />
+            </div>
+            <div className="tiny dim">{tweaks.accentGlow.toFixed(1)}×</div>
           </div>
         </div>
 

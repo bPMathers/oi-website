@@ -645,8 +645,8 @@ export const OI_DATA = {
                 en: 'Residency announced: Halyards in the Eastern Townships',
             },
             body: {
-                fr: "Halyards retourne à la chapelle désaffectée des Cantons-de-l'Est pour une résidence fermée de trois semaines. Une séance d'écoute publique sera fixée à la fin mai — liste de membres seulement.",
-                en: 'Halyards return to the disused chapel in the Eastern Townships for a closed three-week residency. A public listening session will be scheduled for late May — membership list only.',
+                fr: "Halyards retourne à la chapelle désaffectée des Cantons-de-l'Est pour une résidence fermée de trois semaines. Une séance d'écoute publique sera fixée à la fin mai",
+                en: 'Halyards return to the disused chapel in the Eastern Townships for a closed three-week residency. A public listening session will be scheduled for late May.',
             },
         },
         {

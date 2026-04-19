@@ -5,7 +5,7 @@ const TWEAK_DEFAULTS = {
   theme: 'light',
   accent: 'red',
   customAccent: null,
-  accentGlow: 0.5,
+  accentGlow: 1.5,
   fontpair: 'serif-mono',
   glitch: 0.5,
   graphLayout: 'radial',
