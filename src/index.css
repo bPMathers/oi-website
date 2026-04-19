@@ -1596,6 +1596,11 @@ hr.rule-thick { border: 0; border-top: 1px solid var(--ink); margin: 0; }
 .wave-row .play:hover { border-color: var(--accent); color: var(--accent); }
 .wave-row .t { font-family: var(--f-mono); font-size: var(--step--1); color: var(--ink-3); }
 
+@media (max-width: 480px) {
+  .wave-row .t { display: none; }
+  .np-time { display: none; }
+}
+
 .glyph-strip {
   display: flex;
   gap: 8px;

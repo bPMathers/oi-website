@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { TweaksProvider } from './context/TweaksContext.jsx'
+import { AudioPlayerProvider } from './context/AudioPlayerContext.jsx'
 import Home from './pages/Home.jsx'
 import Roster from './pages/Roster.jsx'
 import Releases from './pages/Releases.jsx'
@@ -17,6 +18,7 @@ export default function App() {
   return (
     <BrowserRouter basename="/oi-website">
       <TweaksProvider>
+        <AudioPlayerProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/roster" element={<Roster />} />
@@ -32,6 +34,7 @@ export default function App() {
         <GlitchLayers />
         <GlitchTick />
         <TweaksPanel />
+        </AudioPlayerProvider>
       </TweaksProvider>
     </BrowserRouter>
   )

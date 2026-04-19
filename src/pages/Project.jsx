@@ -4,9 +4,10 @@ import Nav from '../components/Nav.jsx'
 import CoordBar from '../components/CoordBar.jsx'
 import Footer from '../components/Footer.jsx'
 import Cover from '../components/Cover.jsx'
-import Waveform from '../components/Waveform.jsx'
 import { OI_DATA } from '../data/oi.js'
 import { useTweaks } from '../context/TweaksContext.jsx'
+
+import TrackRow from '../components/TrackRow.jsx'
 
 const TRACK_TITLES = [
   ['Signal, partial', 'Room tone (west)', 'Coda for open window', 'Untitled, slowed'],
@@ -103,15 +104,14 @@ export default function Project() {
                 </div>
                 <div className="track-list">
                   {ft.map((tk, i) => (
-                    <div key={i} className="wave-row">
-                      <button className="play">▶</button>
-                      <div>
-                        <div className="mono small dim">A{i + 1}</div>
-                        <div className="serif italic" style={{ fontSize: 'var(--step-1)' }}>{tk}</div>
-                      </div>
-                      <Waveform seed={seed + i * 13} bars={60} />
-                      <span className="t">{mmss(180 + (seed * (i + 1)) % 260)}</span>
-                    </div>
+                    <TrackRow
+                      key={i}
+                      instanceId={`${p.id}-track-${i}`}
+                      index={i}
+                      title={tk}
+                      seed={seed + i * 13}
+                      durationSec={180 + (seed * (i + 1)) % 260}
+                    />
                   ))}
                 </div>
               </>

@@ -7,9 +7,16 @@ import Cover from '../components/Cover.jsx'
 import Waveform from '../components/Waveform.jsx'
 import { OI_DATA } from '../data/oi.js'
 import { useTweaks } from '../context/TweaksContext.jsx'
+import { useAudioPlayer } from '../context/AudioPlayerContext.jsx'
+
+function mmss(s) {
+  const m = Math.floor(s / 60), sec = Math.floor(s % 60)
+  return `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`
+}
 
 export default function Home() {
   const { tweaks, t, i18n } = useTweaks()
+  const { playing, toggle, restart, currentTime, duration } = useAudioPlayer('home-now-playing')
 
   const stripItems = OI_DATA.projects.map(p => (
     <span key={p.id}>
@@ -224,25 +231,25 @@ export default function Home() {
                 </div>
               </div>
               <div className="np-controls">
-                <button className="btn">{t.prev}</button>
-                <button className="btn accent">{t.play}</button>
-                <button className="btn">{t.next}</button>
+                <button className="btn" onClick={restart}>{t.prev}</button>
+                <button className="btn accent" onClick={toggle}>{playing ? t.pause : t.play}</button>
+                <button className="btn" onClick={restart}>{t.next}</button>
               </div>
             </div>
             <div style={{ marginTop: 14 }}>
-              <Waveform seed={feat.cat.charCodeAt(4) * 7} bars={120} />
+              <Waveform instanceId="home-now-playing" seed={feat.cat.charCodeAt(4) * 7} bars={120} />
             </div>
             <div
-              className="tiny dim"
+              className="tiny dim np-time"
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 marginTop: 6,
               }}
             >
-              <span>00:00</span>
+              <span>{mmss(currentTime)}</span>
               <span>{t.side_a}</span>
-              <span>{feat.duration}</span>
+              <span>{duration > 0 ? mmss(duration) : feat.duration}</span>
             </div>
           </div>
         )}

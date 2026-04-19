@@ -40,9 +40,9 @@ export const STR = {
     s3_all: "tous les concerts →",
     s4_idx: "§04 · SIGNAL / EN LECTURE",
     s4_title: "Sur la table",
-    s4_meta: "aperçu · non fonctionnel",
+    s4_meta: "aperçu",
     now_playing: "en lecture",
-    prev: "↰ préc.", play: "▶ lire", next: "suiv. ↱",
+    prev: "↰ préc.", play: "▶ lire", pause: "❚❚ pause", next: "suiv. ↱",
     side_a: "face A · ∞",
 
     // footer
@@ -293,9 +293,9 @@ export const STR = {
     s3_all: "all events →",
     s4_idx: "§04 · SIGNAL / NOW PLAYING",
     s4_title: "On the desk",
-    s4_meta: "preview · not functional",
+    s4_meta: "preview",
     now_playing: "now playing",
-    prev: "↰ prev", play: "▶ play", next: "next ↱",
+    prev: "↰ prev", play: "▶ play", pause: "❚❚ pause", next: "next ↱",
     side_a: "side A · ∞",
 
     // footer
