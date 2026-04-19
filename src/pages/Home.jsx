@@ -121,7 +121,7 @@ export default function Home() {
                 className="rel"
                 to={proj ? `/project/${proj.id}` : '/releases'}
               >
-                <Cover id={r.cat} label={r.cat} />
+                <Cover id={r.cat} label={r.cat} title={i18n(r.title)} artist={proj ? proj.name : t.various} format={i18n(r.format)} year={r.year} duration={r.duration} />
                 <div className="m">
                   {r.cat} · {i18n(r.format)}
                 </div>
@@ -214,7 +214,7 @@ export default function Home() {
                 alignItems: 'center',
               }}
             >
-              <Cover id={feat.cat} label={feat.cat} />
+              <Cover id={feat.cat} label={feat.cat} title={i18n(feat.title)} artist={featProj ? featProj.name : t.various} format={i18n(feat.format)} year={feat.year} duration={feat.duration} />
               <div>
                 <div className="small upper dim">
                   {feat.cat} · {t.now_playing}

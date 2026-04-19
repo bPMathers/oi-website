@@ -209,7 +209,7 @@ export default function Project() {
         <div className="discography">
           {rels.map(r => (
             <Link key={r.cat} className="rel-row" to="/releases">
-              <Cover id={r.cat} label={r.cat} />
+              <Cover id={r.cat} label={r.cat} title={i18n(r.title)} artist={p.name} format={i18n(r.format)} year={r.year} duration={r.duration} />
               <div>
                 <div className="t">{i18n(r.title)}</div>
                 <div className="meta">{r.cat} · {i18n(r.format)}</div>

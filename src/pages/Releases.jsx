@@ -93,7 +93,7 @@ export default function Releases() {
               const proj = r.project ? OI_DATA.projectById[r.project] : null
               return (
                 <a key={r.cat} href={hrefFor(r)} onClick={(e) => { e.preventDefault(); navigate(hrefFor(r)) }}>
-                  <Cover id={r.cat} label={r.cat} />
+                  <Cover id={r.cat} label={r.cat} title={i18n(r.title)} artist={proj ? proj.name : t.various} format={i18n(r.format)} year={r.year} duration={r.duration} />
                   <div className="t">{i18n(r.title)}</div>
                   <div className="m">{(proj ? proj.name : t.various)} · {i18n(r.format)}</div>
                 </a>

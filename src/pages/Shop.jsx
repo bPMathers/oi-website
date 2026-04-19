@@ -105,7 +105,7 @@ export default function Shop() {
             const lowStock = p.stock === 'low' || p.stock === 'last copies'
             return (
               <div key={p.sku} className="prod">
-                <Cover id={p.sku} label={p.sku} />
+                <Cover id={p.sku} label={p.sku} title={i18n(p.title)} format={i18n(p.format)} />
                 <div className="sku">{p.sku}</div>
                 <div className="t">{i18n(p.title)}</div>
                 <div className="m">{i18n(p.format)}</div>
