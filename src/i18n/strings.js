@@ -124,7 +124,7 @@ export const STR = {
 
     // events
     events_kicker: "§ transmissions · 2026",
-    events_h1: "Dates, surtout<br>au Québec.",
+    events_h1: "Dates, surtout<br>un peu partout.",
     events_lede: "Concerts peu fréquents. Petites salles, bonnes sonos, publics patients. Billets à la porte sauf mention d'une prévente.",
     events_map_idx: "§ carte · approximative",
     events_map_h: "Où nous serons",
@@ -374,7 +374,7 @@ export const STR = {
 
     // events
     events_kicker: "§ transmissions · 2026",
-    events_h1: "Dates, mostly<br>in Québec.",
+    events_h1: "Dates, mostly <br> a bit somewhere.",
     events_lede: "Performances are infrequent. Small rooms with good PAs and patient audiences. Tickets on the door unless a presale is linked.",
     events_map_idx: "§ map · approximate",
     events_map_h: "Where we will be",
