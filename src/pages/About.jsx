@@ -25,12 +25,12 @@ export default function About() {
           {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
         </div>
 
-        <div className="facts">
+        {/* <div className="facts">
           <div className="f"><div className="n">30</div><div className="l">{t.about_facts.items}</div></div>
           <div className="f"><div className="n">12</div><div className="l">{t.about_facts.projects}</div></div>
           <div className="f"><div className="n">14</div><div className="l">{t.about_facts.operators}</div></div>
           <div className="f"><div className="n">09</div><div className="l">{t.about_facts.years}</div></div>
-        </div>
+        </div> */}
 
         <div className="section-head">
           <div>
