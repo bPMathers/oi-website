@@ -13,12 +13,14 @@ import Project from './pages/Project.jsx'
 import GlitchLayers from './components/GlitchLayers.jsx'
 import TweaksPanel from './components/TweaksPanel.jsx'
 import GlitchTick from './components/GlitchTick.jsx'
+import ScrollToTop from './components/ScrollToTop.jsx'
 
 export default function App() {
   return (
     <BrowserRouter basename="/oi-website">
       <TweaksProvider>
         <AudioPlayerProvider>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/roster" element={<Roster />} />

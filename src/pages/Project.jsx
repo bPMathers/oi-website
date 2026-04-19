@@ -39,16 +39,6 @@ export default function Project() {
 
   useEffect(() => {
     document.title = `${p.name} — OI`
-    // Scroll to hash anchor if present
-    const hash = window.location.hash
-    if (hash) {
-      setTimeout(() => {
-        const el = document.querySelector(hash)
-        if (el) el.scrollIntoView({ behavior: 'smooth' })
-      }, 100)
-    } else {
-      window.scrollTo(0, 0)
-    }
     return () => { document.title = 'Observatoire Idéal' }
   }, [p.name])
 
