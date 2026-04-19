@@ -42,6 +42,10 @@
   /* tweaks */
   --glitch: 0.5;
   --accent-glow: 1.5;
+
+  /* glow helpers — consumed by the glow-effects block below */
+  --glow-t: 0 0 calc(8px * var(--accent-glow)) var(--accent);
+  --glow-b: 0 0 calc(12px * var(--accent-glow)) calc(4px * var(--accent-glow)) var(--accent);
 }
 
 [data-theme="dark"] {
@@ -865,7 +869,7 @@ hr.rule-thick { border: 0; border-top: 1px solid var(--ink); margin: 0; }
   background: var(--paper-2);
   position: relative;
 }
-.signal-box::before {
+/* .signal-box::before {
   content: "INCOMING · 0x4A7F";
   position: absolute;
   top: -8px;
@@ -876,7 +880,7 @@ hr.rule-thick { border: 0; border-top: 1px solid var(--ink); margin: 0; }
   font-size: var(--step--2);
   color: var(--accent);
   letter-spacing: 0.1em;
-}
+} */
 
 .mini-events { margin-top: 26px; }
 .mini-events .ev {
@@ -1698,3 +1702,67 @@ hr.rule-thick { border: 0; border-top: 1px solid var(--ink); margin: 0; }
   .members-box .m { grid-template-columns: 1fr; }
   .members-box .m .r { text-align: left; }
 }
+
+/* ============================
+   Glow effects
+   Text-shadow / box-shadow everywhere --accent is used,
+   scaling with --accent-glow.
+   ============================ */
+
+/* Text glow */
+.acc,
+.coord-bar .cursor::after,
+.hero-tag,
+.tl-year,
+.a-head .kicker,
+.manifesto p:first-child::first-letter,
+.facts .f .n,
+.ev-card .date-block .day,
+.status-tickets,
+.entry .d,
+.entry:hover .d .n,
+.prod .sku,
+.stock.low,
+.notice strong,
+.routing .r h4,
+.node.highlight .label,
+.popup .cat,
+.popup-mobile .cat,
+.p-head .cat,
+.related a .c,
+.related a:hover,
+.tbl .cat-cell,
+.mini-events .ev .d,
+.roster-list .row-p .cat,
+.sidebar .m:hover,
+.sidebar .m.active,
+.foot a:hover,
+.nav .lang-btn.active,
+.wave-row .play:hover,
+.glyph-strip a:hover,
+.btn.accent,
+.quote::before,
+.quote::after,
+a.link:hover { text-shadow: var(--glow-t); }
+
+@media (max-width: 720px) {
+  .nav ul li a.active { text-shadow: var(--glow-t); }
+}
+
+/* Background/fill glow */
+.nav .brand .dot,
+.strip .track .dot,
+.artifact,
+.glitch-extra.pixel,
+.hero h1 .redact:hover,
+.btn.accent:hover,
+.prod button.added { box-shadow: var(--glow-b); }
+
+/* Waveform — narrow glow so bars stay crisp */
+.wave .bar.past { box-shadow: 0 0 calc(3px * var(--accent-glow)) calc(1px * var(--accent-glow)) var(--accent); }
+.wave .cursor   { box-shadow: 0 0 calc(5px * var(--accent-glow)) calc(1px * var(--accent-glow)) var(--accent); }
+
+/* Form focus ring glow */
+.form input:focus,
+.form select:focus,
+.form textarea:focus { box-shadow: 0 0 calc(8px * var(--accent-glow)) calc(2px * var(--accent-glow)) var(--accent); }
