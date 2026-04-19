@@ -24,6 +24,12 @@ export default function Shop() {
   const count = items.reduce((s, [, q]) => s + q, 0)
 
   const add = (sku) => setCart(c => ({ ...c, [sku]: (c[sku] || 0) + 1 }))
+  const remove = (sku) => setCart(c => {
+    const q = (c[sku] || 0) - 1
+    if (q <= 0) { const next = { ...c }; delete next[sku]; return next }
+    return { ...c, [sku]: q }
+  })
+  const removeAll = (sku) => setCart(c => { const next = { ...c }; delete next[sku]; return next })
 
   return (
     <div className="scanlines" data-screen-label="Shop">
@@ -68,8 +74,14 @@ export default function Shop() {
                   const p = OI_DATA.shop.find(x => x.sku === sku)
                   return (
                     <div key={sku} className="item">
-                      <span>{i18n(p.title)} <span className="dim">×{q}</span></span>
-                      <span>${p.price * q}</span>
+                      <span className="item-name">{i18n(p.title)}</span>
+                      <span className="item-qty">
+                        <button onClick={() => remove(sku)}>−</button>
+                        <span>{q}</span>
+                        <button onClick={() => add(sku)}>+</button>
+                      </span>
+                      <span className="item-price">${p.price * q}</span>
+                      <button className="item-del" onClick={() => removeAll(sku)} title={FR ? 'Retirer' : 'Remove'}>×</button>
                     </div>
                   )
                 })}
@@ -104,14 +116,18 @@ export default function Shop() {
                   </span>
                 </div>
                 <div style={{ marginTop: 10 }}>
-                  <button
-                    className={inCart > 0 ? 'added' : ''}
-                    onClick={() => add(p.sku)}
-                  >
-                    {inCart > 0
-                      ? `${FR ? '✓ ajouté ×' : '✓ added ×'}${inCart}`
-                      : (FR ? '+ au panier' : '+ add to basket')}
-                  </button>
+                  {inCart > 0 ? (
+                    <div className="prod-qty">
+                      <button onClick={() => remove(p.sku)}>−</button>
+                      <span className="mono small">{inCart}</span>
+                      <button onClick={() => add(p.sku)}>+</button>
+                      <button className="prod-del" onClick={() => removeAll(p.sku)} title={FR ? 'Retirer' : 'Remove'}>×</button>
+                    </div>
+                  ) : (
+                    <button onClick={() => add(p.sku)}>
+                      {FR ? '+ au panier' : '+ add to basket'}
+                    </button>
+                  )}
                 </div>
               </div>
             )
