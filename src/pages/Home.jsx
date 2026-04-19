@@ -205,15 +205,8 @@ export default function Home() {
         </div>
 
         {feat && (
-          <div style={{ border: '1px solid var(--rule)', padding: '14px 18px' }}>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '120px 1fr auto',
-                gap: 18,
-                alignItems: 'center',
-              }}
-            >
+          <div className="now-playing">
+            <div className="np-row">
               <Cover id={feat.cat} label={feat.cat} title={i18n(feat.title)} artist={featProj ? featProj.name : t.various} format={i18n(feat.format)} year={feat.year} duration={feat.duration} />
               <div>
                 <div className="small upper dim">
@@ -230,7 +223,7 @@ export default function Home() {
                   {feat.duration}
                 </div>
               </div>
-              <div style={{ display: 'flex', gap: 6 }}>
+              <div className="np-controls">
                 <button className="btn">{t.prev}</button>
                 <button className="btn accent">{t.play}</button>
                 <button className="btn">{t.next}</button>

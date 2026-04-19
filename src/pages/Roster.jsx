@@ -205,7 +205,7 @@ export default function Roster() {
     const onResize = () => { seedLayout(layoutRef.current); renderPositions() }
     window.addEventListener('resize', onResize)
 
-    const onMouseMove = (ev) => {
+    const onPointerMove = (ev) => {
       const drag = draggingRef.current
       if (!drag) return
       const dx = ev.clientX - drag.startX, dy = ev.clientY - drag.startY
@@ -216,7 +216,7 @@ export default function Roster() {
       n.vx = n.vy = 0
       renderPositions()
     }
-    const onMouseUp = () => {
+    const onPointerUp = () => {
       const drag = draggingRef.current
       if (!drag) return
       const idx = drag.idx
@@ -235,14 +235,16 @@ export default function Roster() {
         }
       }
     }
-    window.addEventListener('mousemove', onMouseMove)
-    window.addEventListener('mouseup', onMouseUp)
+    window.addEventListener('pointermove', onPointerMove)
+    window.addEventListener('pointerup', onPointerUp)
+    window.addEventListener('pointercancel', onPointerUp)
 
     return () => {
       cancelAnimationFrame(rafRef.current)
       window.removeEventListener('resize', onResize)
-      window.removeEventListener('mousemove', onMouseMove)
-      window.removeEventListener('mouseup', onMouseUp)
+      window.removeEventListener('pointermove', onPointerMove)
+      window.removeEventListener('pointerup', onPointerUp)
+      window.removeEventListener('pointercancel', onPointerUp)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -265,7 +267,9 @@ export default function Roster() {
   }
   const handleNodeMouseLeave = () => setPopup(null)
 
-  const handleNodeMouseDown = (idx, e) => {
+  const handleNodePointerDown = (idx, e) => {
+    // only start drag for the primary pointer button (mouse left, touch, pen)
+    if (e.button != null && e.button !== 0) return
     e.preventDefault()
     const n = simRef.current[idx]
     n.fixed = true
@@ -382,7 +386,7 @@ export default function Roster() {
                     onMouseEnter={(e) => handleNodeMouseEnter(i, e)}
                     onMouseMove={(e) => handleNodeMouseMove(i, e)}
                     onMouseLeave={handleNodeMouseLeave}
-                    onMouseDown={(e) => handleNodeMouseDown(i, e)}
+                    onPointerDown={(e) => handleNodePointerDown(i, e)}
                     onClick={(e) => handleNodeClick(i, e)}
                   >
                     <div className="dot" />
